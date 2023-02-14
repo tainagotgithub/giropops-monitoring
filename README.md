@@ -8,13 +8,10 @@ Full stack tools for monitoring containers and other stuff. ;)
 - Grafana
 - Node_Exporter
 
-#Infra on AWS
+# Infra on AWS with terraform
 First do terraform plan, then terraform init
 Then we will have 3 EC2 machines for our cluster swarm
 
-#Docker Swarm
-On the machines, do docker swarm init, then docker swarm join
-Promote one to master
 
 # Install Demonstration
 
