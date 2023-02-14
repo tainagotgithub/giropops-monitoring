@@ -49,53 +49,6 @@ Setting Netdata Exporter configuration in Prometheus:
          - targets: ['YOUR_IP:19999']
 ```
 
-
-## Get Rocket.Chat Incoming WebHook 
-
-1) Deploy giropops stack, only to get the WebHook
-
-```
-# docker stack deploy -c docker-compose.yml giropops
-```
-
-2) Access YOUR_IP:3080 and create your account
-
-3) Login with your user and go to: Administration => Integrations => New Integration => Incoming WebHook
-
-4) Set "Enabled" and "Script Enabled" to "True"
-
-5) Set all channels, icons, etc. as you need
-
-6) Paste contents of [rocketchat/incoming-webhook.js](conf/rocketchat/incoming-webhook.js) into Script field.
-
-7) Create Integration. You will see some values appear. Copy WebHook URL and proceed to "Integration between Rocket.Chat and AlertManager" section.
-
-8) Remove giropops stack
-```
-# docker stack rm giropops
-```
-[Rocket.Chat Docs](https://rocket.chat/docs/administrator-guides/integrations/)
-
-
-## Integration between Rocket.Chat and AlertManager
-
-```
-# vim conf/alertmanager/config.yml
-
-route:
-    repeat_interval: 30m
-    group_interval: 30m
-    receiver: 'rocketchat'
-
-receivers:
-    - name: 'rocketchat'
-      webhook_configs:
-          - send_resolved: false
-            # copy below the WEBHOOK that you create before
-            url: '${WEBHOOK_URL}'
-```
-
-
 ## Deploy Stack with Docker Swarm
 
 Execute deploy to create the stack of giropops-monitoring:
