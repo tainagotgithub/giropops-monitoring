@@ -119,14 +119,6 @@ To access Prometheus Node_exporter metrics on browser:
 http://YOUR_IP:9100/metrics
 ```
 
-To access RocketChat interface on browser:  
-```
-http://YOUR_IP:3080
-> First to register becomes admin
-```
-Remember that RocketChat endpoints and payloads are identical to Slack's, so if you wanna set Grafana alerts, just select a slack alert and give it a RocketChat incoming webhook URL, with no script needed.
-
-
 Test if your alerts are ok:
 ```
 # docker service rm giropops_node-exporter
